@@ -58,29 +58,46 @@ namespace assignment01OOP
             //}
             #endregion
 
-            #region
+            #region Q03
             /* 3 - Assign the following Permissions(Read, write, Delete, Execute) in a form of Enum           .
                  Create Variable from previous Enum to Add and Remove Permission from variable, check if specific 
                  Permission existed inside variable*/
 
-            Users user = new Users();
-                
-            user.Permissions |= Permissions.read;
-            user.Permissions |= Permissions.Write;
+            //Users user = new Users();
 
-            Console.WriteLine($"Current Permissions: {user.Permissions}");
+            //user.Permissions |= Permissions.read;
+            //user.Permissions |= Permissions.Write;
 
-            user.Permissions ^= Permissions.Write;
-            Console.WriteLine($"Current Permissions: {user.Permissions}");
+            //Console.WriteLine($"Current Permissions: {user.Permissions}");
 
-            user.Permissions |= Permissions.excute;
+            //user.Permissions ^= Permissions.Write;
+            //Console.WriteLine($"Current Permissions: {user.Permissions}");
 
-            Console.WriteLine($"Final Permissions: {user.Permissions}");
+            //user.Permissions |= Permissions.excute;
 
-            if (!user.Permissions.HasFlag(Permissions.delete))
+            //Console.WriteLine($"Final Permissions: {user.Permissions}");
+
+            //if (!user.Permissions.HasFlag(Permissions.delete))
+            //{
+            //    Console.WriteLine("User does NOT have Delete permission.");
+            //}
+
+            #endregion
+
+            #region Q 04 
+            /*4.Create an Enum called "Colors" with the basic colors (Red, Green, Blue) as its members.
+           * Write a C# program that takes a color name as input from the user and displays a message
+             * indicating whether the input color is a primary color or not.*/
+
+            Console.WriteLine("Enter a Color name (Red, Green, Blue):");
+            string input = Console.ReadLine();
+
+            if (Enum.TryParse(input, true, out Colors Colors))
             {
-                Console.WriteLine("User does NOT have Delete permission.");
+                Console.WriteLine("color is a primary color ");
             }
+            else
+                Console.WriteLine("color is not a primary color ");
 
             #endregion
         }
