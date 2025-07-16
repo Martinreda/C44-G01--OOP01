@@ -1,4 +1,5 @@
 ﻿using assignment01OOP.classes;
+using System.ComponentModel;
 using System.ComponentModel.Design;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -27,32 +28,60 @@ namespace assignment01OOP
                  as its members.Write a C# program that takes a season name as input from the user and displays the corresponding 
                  month range for that season. Note range for seasons 
                  ( spring march to may , summer june to august , autumn September to November , winter December to February)*/
-            Console.WriteLine("Enter a season name (Spring, Summer, Autumn, Winter):");
-            string input = Console.ReadLine();
 
-            if (Enum.TryParse(input, true, out Season season))
+
+            //Console.WriteLine("Enter a season name (Spring, Summer, Autumn, Winter):");
+            //string input = Console.ReadLine();
+
+            //if (Enum.TryParse(input, true, out Season season))
+            //{
+            //    if (season == Season.Spring)
+            //    {
+            //        Console.WriteLine("Spring: March to May");
+            //    }
+            //    else if (season == Season.Summer)
+            //    {
+            //        Console.WriteLine("Summer: June to August");
+            //    }
+            //    else if (season == Season.Autumn)
+            //    {
+            //        Console.WriteLine("Autumn: September to November");
+            //    }
+            //    else if (season == Season.Winter)
+            //    {
+            //        Console.WriteLine("Winter: December to February");
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Invalid season name. Please enter Spring, Summer, Autumn, or Winter.");
+            //}
+            #endregion
+
+            #region
+            /* 3 - Assign the following Permissions(Read, write, Delete, Execute) in a form of Enum           .
+                 Create Variable from previous Enum to Add and Remove Permission from variable, check if specific 
+                 Permission existed inside variable*/
+
+            Users user = new Users();
+                
+            user.Permissions |= Permissions.read;
+            user.Permissions |= Permissions.Write;
+
+            Console.WriteLine($"Current Permissions: {user.Permissions}");
+
+            user.Permissions ^= Permissions.Write;
+            Console.WriteLine($"Current Permissions: {user.Permissions}");
+
+            user.Permissions |= Permissions.excute;
+
+            Console.WriteLine($"Final Permissions: {user.Permissions}");
+
+            if (!user.Permissions.HasFlag(Permissions.delete))
             {
-                if (season == Season.Spring)
-                {
-                    Console.WriteLine("Spring: March to May");
-                }
-                else if (season == Season.Summer)
-                {
-                    Console.WriteLine("Summer: June to August");
-                }
-                else if (season == Season.Autumn)
-                {
-                    Console.WriteLine("Autumn: September to November");
-                }
-                else if (season == Season.Winter)
-                {
-                    Console.WriteLine("Winter: December to February");
-                }
+                Console.WriteLine("User does NOT have Delete permission.");
             }
-            else
-            {
-                Console.WriteLine("Invalid season name. Please enter Spring, Summer, Autumn, or Winter.");
-            }
+
             #endregion
         }
     }
